@@ -41,7 +41,8 @@ dfa_letter = {
     'q18':{'a':'q21','b':'q19'},
     'q19':{'a':'q21','b':'q21'},
     'q20':{'a':'q16','b':'q21'},
-    'q21':{'a':'q21','b':'q21'}
+    'q21':{'a':'q21','b':'q21'},
+    'T':{'a':'T','b':'T'}
 }
 states = []
 
@@ -60,7 +61,8 @@ def valid_ornot(final_outcome,types):
         else:
             return 'Rejected',states
     
-    
+
+
 
 def dfa_checker(string,types):
     global states
@@ -76,7 +78,7 @@ def dfa_checker(string,types):
     elif types == 'letter':
         for x in string:
             states.append(current_state)
-            current_state= dfa_letter[current_state][string]
+            current_state= dfa_letter[current_state][x]
         results, final_state = valid_ornot(current_state,types)
         states = []
         return results,final_state
